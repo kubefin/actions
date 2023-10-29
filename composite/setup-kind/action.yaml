@@ -22,12 +22,17 @@ inputs:
     description: 'Version of kind to install'
     required: true
     default: '0.17.0'
+  os:
+    description: 'os configuration, it could be linux-amd64, darwin-arm64'
+    required: false
+    default: 'linux-amd64'
+
 runs:
   using: "composite"
   steps:
     - shell: bash
       run: |
         set -ex
-        curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-linux-amd64
+        curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-${{ inputs.os }}
         chmod +x ./kind
         sudo mv kind /usr/local/bin
