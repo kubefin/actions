@@ -1,4 +1,4 @@
-# Copyright 2022 The KubeFin Authors.
+# Copyright 2020 The Knative Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -327,7 +327,7 @@ jobs:
           boilerplate-check check \
             --boilerplate ./hack/boilerplate/boilerplate.${{ matrix.extension }}.txt \
             --file-extension ${{ matrix.extension }} \
-            --exclude "(vendor|third_party)/" |
+            --exclude "(vendor|third_party|reference)/" |
           reviewdog -efm="%A%f:%l: %m" \
                 -efm="%C%.%#" \
                 -name="${{ matrix.language }} headers" \
